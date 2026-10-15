@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Dashboard</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+  <!-- Full Header -->
+  <header class="header">
+
+    <div class="box1">
+            <div class="logo"></div>
+    </div>
+    
+
+     <div class="box2">
+
+     <div class="search-box">
+    <span class="search-icon">
+        <i class="fa-solid fa-magnifying-glass"></i>  
+    </span>
+    <input type="search" id="inputsearch" placeholder="Search Product...">
+    </div>
+
+    <div class="notification">
+        <i class="fa-solid fa-bell"></i>
+        <div class="dot"></div>
+    </div>
+
+    <div class="Selection-are">
+      <select class="select">
+        <option class="Admin">Admin</option>
+        <option class="User">User</option>
+      </select>
+    </div>
+
+    </div>
+
+
+  </header>
+
+  <!-- Header ke neeche full layout -->
+  <div class="dashboard-layout">
+
+    <!-- Left Aside -->
+    <aside class="sidebar" id="sidebar">
+      <h3>Menu</h3>
+
+      <nav class="sidebar-menu">
+        <dev class="dashboard">
+            <i class="fa-solid fa-gauge-high"></i>
+            <a href="#" class="active">Dashboard</a>
+        </dev>
+        <dev class="User style">
+           <i class="fa-solid fa-box-open"></i>
+            <a href="#" class="active">Products </a>
+        </dev>
+        <dev class="Tasks style">
+           <i class="fa-solid fa-cart-flatbed-suitcase"></i>
+            <a href="#" class="active">Sale</a>
+        </dev>
+        <dev class="Setting style">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+            <a href="#" class="active">Stock</a>
+        </dev>
+        
+      </nav>
+    </aside>
+
+    <!-- Right Main Content -->
+    <main class="main-content">
+      <h1>Dashboard</h1>
+      <p class="subtitle">Welcome to your admin dashboard.</p>
+
+      <div class="cards">
+
+        <div class="inner-card">
+
+          <div class="card1">
+
+            <p>Total Products</p>
+            <h3 class="total-Products">2,104</h3>
+
+          </div>
+           <div class="cardicon">
+                  <div class="Users">
+                   <i class="fa-solid fa-box-open"></i>
+                  </div>
+            </div>
+              
+
+        </div>
+
+        <div class="inner-card">
+
+          <div class="card1">
+
+            <p>Today Sale</p>
+            <h3>2,104</h3>
+
+          </div>
+           <div class="cardicon">
+                  <div class="Users">
+                   <i class="fa-solid fa-cart-flatbed-suitcase"></i>
+                  </div>
+            </div>
+              
+
+        </div>
+
+        <div class="inner-card">
+          <div class="card1">
+            <p>Low Stock</p>
+            <h3>2,104</h3>
+
+          </div>
+           <div class="cardicon">
+                  <div class="Users">
+                   <i class="fa-solid fa-arrow-trend-up"></i>
+                  </div>
+            </div>
+              
+
+        </div>
+      </div>
+
+<section class="Tab-section">
+
+  <div class="stock-tabs">
+    <button class="stock-tab stock-active-tab" data-tab="sales">
+      Today Sale
+    </button>
+
+    <button class="stock-tab low-stock-tab" data-tab="low">
+      Low Stock
+    </button>
+
+    <button class="stock-tab" data-tab="coming">
+      Coming Stock
+    </button>
+  </div>
+
+</section>
+
+<section class="content-box" id="dataSection">
+
+  <div class="table-heading">
+    <h3 id="tableTitle">Today Sale</h3>
+    <span id="recordCount">Loading...</span>
+  </div>
+
+  <div class="table-scroll">
+
+    <table class="stock-table">
+      <thead id="tableHeaders">
+        <tr>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>SKU</th>
+          <th>Listing Date</th>
+          <th>Category</th>
+          <th>Purchase Price</th>
+          <th>Sale Price</th>
+        </tr>
+      </thead>
+
+      <tbody id="tableBody">
+        <tr>
+          <td colspan="7">Loading data...</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <p id="emptyMessage" class="empty-message"></p>
+
+</section>
+     
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>
