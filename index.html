@@ -1,0 +1,788 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Dashboard</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+</head>
+
+<body>
+
+    <!-- Full Header -->
+    <header class="header">
+
+        <div class="box1">
+            <div class="logo"></div>
+        </div>
+        <button
+                type="button"
+                class="menu-button"
+                id="menuButton"
+                aria-label="Open navigation menu"
+                aria-controls="sidebar"
+                aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="box2">
+
+            <div class="search-box">
+                <span class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+
+                <input
+                    type="search"
+                    id="inputsearch"
+                    placeholder="Search Product..."
+                />
+            </div>
+
+            <div class="notification">
+                <i class="fa-solid fa-bell"></i>
+                <div class="dot"></div>
+            </div>
+
+            <div class="Selection-are">
+                <select class="select">
+                    <option class="Admin" value="admin">Admin</option>
+                    <option class="User" value="user">User</option>
+                </select>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Header ke neeche full layout -->
+    <div class="dashboard-layout">
+
+        <!-- Left Aside -->
+        <aside class="sidebar" id="sidebar">
+            <h3>Menu</h3>
+
+            <nav class="sidebar-menu">
+
+                <div class="dashboard">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <a href="#" id="dashboardMenu" class="active">Dashboard</a>
+                </div>
+
+                <div class="User style">
+                    <i class="fa-solid fa-box-open"></i>
+                    <a href="#" id="productsMenu">Products</a>
+                </div>
+
+                <div class="Tasks style">
+                    <i class="fa-solid fa-cart-flatbed-suitcase"></i>
+                    <a href="#" id="saleMenu">Sale</a>
+                </div>
+
+                <div class="Setting style">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                    <a href="#" id="stockMenu">Stock</a>
+                </div>
+
+            </nav>
+        </aside>
+
+        <!-- Right Main Content -->
+        <main class="main-content">
+
+            <!-- Dashboard Content -->
+            <div id="dashboardView">
+
+                <h1>Dashboard</h1>
+                <p class="subtitle">Welcome to your admin dashboard.</p>
+
+                <div class="cards">
+
+                    <div class="inner-card">
+                        <div class="card1">
+                            <p>Total Products</p>
+                            <h3 class="total-Products">0</h3>
+                        </div>
+
+                        <div class="cardicon">
+                            <div class="Users">
+                                <i class="fa-solid fa-box-open"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="inner-card">
+                        <div class="card1">
+                            <p>Today Sale</p>
+                            <h3>₹0</h3>
+                        </div>
+
+                        <div class="cardicon">
+                            <div class="Users">
+                                <i class="fa-solid fa-cart-flatbed-suitcase"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="inner-card">
+                        <div class="card1">
+                            <p>Low Stock</p>
+                            <h3>0</h3>
+                        </div>
+
+                        <div class="cardicon">
+                            <div class="Users">
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Existing stock tabs -->
+                <section class="Tab-section">
+                    <div class="stock-tabs">
+
+                        <button
+                            type="button"
+                            class="stock-tab "
+                            data-tab="sales"
+                        >
+                            Stock Items
+                        </button>
+
+                        <button
+                            type="button"
+                            class="stock-tab"
+                            data-tab="coming"
+                        >
+                            Sale Product
+                        </button>
+
+                        <button
+                            type="button"
+                            class="stock-tab low-stock-tab"
+                            data-tab="low"
+                        >
+                            Low Stock
+                        </button>
+
+                    </div>
+
+                    <!-- Sale Date Filter -->
+                    <div id="saleDateFilter" class="sale-date-filter">
+                        <div>
+                            <label for="saleStartDate">From Date</label>
+                            <input type="date" id="saleStartDate">
+                        </div>
+
+                        <div>
+                            <label for="saleEndDate">To Date</label>
+                            <input type="date" id="saleEndDate">
+                        </div>
+
+                        <button type="button" id="filterSalesBtn">
+                            <i class="fa-solid fa-filter"></i> Apply Filter
+                        </button>
+
+                        <button type="button" id="resetSalesFilterBtn">
+                            Reset
+                        </button>
+                    </div>
+
+                </section>
+
+                <!-- Data Table -->
+                <section class="content-box" id="dataSection">
+
+                    <div class="table-heading">
+                        <h3 id="tableTitle">Stock Items</h3>
+                        <span id="recordCount">0 records</span>
+                    </div>
+
+                    <div class="table-scroll">
+                        <table class="stock-table">
+
+                            <thead id="tableHeaders">
+                                <tr>
+                                    <th>Product ID</th>
+                                    <th>Product Name</th>
+                                    <th>SKU</th>
+                                    <th>Listing Date</th>
+                                    <th>Category</th>
+                                    <th>Purchase Price</th>
+                                    <th>Sale Price</th>
+                                    <th>Unit Quantity</th>
+                                    <th>Unit Tyepe</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tableBody">
+                                <tr>
+                                    <td colspan="7">No data loaded.</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <p id="emptyMessage" class="empty-message"></p>
+
+                </section>
+            </div>
+
+            <!-- PRODUCT UPLOAD VIEW -->
+            <section id="productView" hidden>
+
+                <div class="product-page-header">
+                    <div>
+                        <h2>Product Management</h2>
+                    </div>
+                </div>
+
+                <div class="product-field existing-product-search">
+                <label for="existingProductSearch">Search Existing Product</label>
+
+                <input
+                    type="text"
+                    id="existingProductSearch"
+                    placeholder="Product name ya SKU enter karein..."
+                    autocomplete="off" >
+
+                <div id="productSuggestions" class="product-suggestions"></div>
+
+                <button type="button" id="clearSelectedProduct" hidden>
+                    Add as New Product
+                </button>
+
+                <p id="selectedProductMessage"></p>
+                </div>
+
+
+                <form id="productForm" class="product-form">
+                    <div class="product-form-grid">
+
+                        <div class="product-field">
+                            <label for="productName">Product Name *</label>
+                            <input
+                                id="productName"
+                                name="product_name"
+                                type="text"
+                                placeholder="e.g. Sewing Thread"
+                                required
+                            >
+                        </div>
+
+                        <div class="product-field">
+                            <label for="productSku">SKU</label>
+                            <input
+                                id="productSku"
+                                name="sku"
+                                type="text"
+                                placeholder="e.g. THR-001"
+                            >
+                        </div>
+
+                        <div class="product-field">
+                            <label for="productCategory">Category</label>
+                            <input
+                                id="productCategory"
+                                name="category"
+                                type="text"
+                                placeholder="e.g. Thread"
+                            >
+                        </div>
+
+                        <!-- Unit Type -->
+                        <div class="product-field">
+                            <label for="productUnit">Unit Type *</label>
+                            <select id="productUnit" name="unit_type" required>
+                                <option value="piece">Piece</option>
+                                <option value="packet">Packet</option>
+                                <option value="box">Box</option>
+                                <option value="meter">Meter</option>
+                                <option value="roll">Roll</option>
+                                <option value="dozen">Dozen</option>
+                            </select>
+                        </div>
+
+                        <!-- Unit Quantity -->
+                        <div class="product-field">
+                            <label for="productUnitQuantity">Unit Quantity *</label>
+                            <input
+                                type="number"
+                                id="productUnitQuantity"
+                                name="unit"
+                                placeholder="e.g. 2 or 3"
+                                min="0"
+                                step="0.001"
+                                value="1"
+                                required
+                            >
+                        </div>
+
+                        <div class="product-field">
+                            <label for="purchasePrice">Purchase Price (₹) *</label>
+                            <input
+                                id="purchasePrice"
+                                name="purchase_price"
+                                type="number"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+                        </div>
+
+                        <div class="product-field">
+                            <label for="sellingPrice">Selling Price (₹) *</label>
+                            <input
+                                id="sellingPrice"
+                                name="selling_price"
+                                type="number"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+                        </div>
+
+                        <div class="product-field">
+                        <label for="incomingQuantity">Incoming Quantity *</label>
+                        <input
+                            id="incomingQuantity"
+                            type="number"
+                            min="0.001"
+                            step="0.001"
+                            value="1"
+                            required
+                        >
+                    </div>
+
+                        <div class="product-field">
+                            <label for="currentStock">Current Stock *</label>
+                            <input
+                                id="currentStock"
+                                name="current_stock"
+                                type="number"
+                                min="0"
+                                step="0.001"
+                                required
+                            >
+                        </div>
+
+                        <div class="product-field">
+                            <label for="mainStock">Main Stock *</label>
+                            <input
+                                id="mainStock"
+                                name="main_stock"
+                                type="number"
+                                min="0"
+                                step="0.001"
+                                required
+                            >
+                        </div>
+
+                        <div class="product-field">
+                            <label for="minStock">Minimum Stock *</label>
+                            <input
+                                id="minStock"
+                                name="min_stock"
+                                type="number"
+                                min="0"
+                                step="0.001"
+                                value="5"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                    <p id="productFormMessage" role="status"></p>
+
+                    <div class="product-form-actions">
+                        <button type="reset" class="product-reset-btn">
+                            Clear Form
+                        </button>
+
+                        <button
+                            type="submit"
+                            id="saveProductBtn"
+                            class="product-save-btn"
+                        >
+                            Save Product
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Sale Entry View -->
+            <section id="saleView" class="sale-view" hidden>
+
+                <div class="sale-page-heading">
+
+                    <div>
+                        <span class="sale-eyebrow">INVENTORY MANAGEMENT</span>
+
+                        <h1>New Sale Entry</h1>
+
+                        <p class="subtitle">
+                            Select a product, enter sale details and submit the record.
+                        </p>
+                    </div>
+
+                    <div class="sale-heading-icon">
+                        <i class="fa-solid fa-receipt"></i>
+                    </div>
+
+                </div>
+
+                <form id="saleForm" class="sale-layout">
+
+                    <!-- Left: Product Search -->
+                    <aside class="sale-product-panel">
+
+                        <div class="sale-panel-heading">
+
+                            <div class="sale-panel-icon">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+
+                            <div>
+                                <h3>Find Product</h3>
+                                <p>Search your existing inventory</p>
+                            </div>
+
+                        </div>
+
+                        <label for="saleProductSearch">Product Name</label>
+
+                        <div class="sale-search-wrap">
+                            <i class="fa-solid fa-search"></i>
+
+                            <input
+                                type="search"
+                                id="saleProductSearch"
+                                placeholder="Search product name or SKU..."
+                                autocomplete="off"
+                            />
+                        </div>
+
+                        <div
+                            id="saleProductResults"
+                            class="sale-product-results"
+                            aria-live="polite"
+                        >
+                            <div class="sale-search-empty">
+                                <i class="fa-solid fa-box-open"></i>
+                                <p>Search to find a product.</p>
+                            </div>
+                        </div>
+
+                        <div class="selected-product-card">
+
+                            <div class="selected-product-icon">
+                                <i class="fa-solid fa-box"></i>
+                            </div>
+
+                            <div>
+                                <span>SELECTED PRODUCT</span>
+
+                                <h4 id="selectedProductName">
+                                    No product selected
+                                </h4>
+
+                                <p id="selectedProductStock">
+                                    Choose a product from search results.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </aside>
+
+                    <!-- Right: Sale Details -->
+                    <div class="sale-form-panel">
+
+                        <div class="sale-panel-heading">
+
+                            <div class="sale-panel-icon">
+                                <i class="fa-solid fa-file-invoice"></i>
+                            </div>
+
+                            <div>
+                                <h3>Sale Details</h3>
+                                <p>Enter customer and transaction information</p>
+                            </div>
+
+                        </div>
+
+                        <div class="sale-form-grid">
+
+                            <div class="sale-field">
+                                <label for="saleProductId">Product ID</label>
+                                <input
+                                    type="text"
+                                    id="saleProductId"
+                                    placeholder="Auto-filled"
+                                    readonly
+                                />
+                            </div>
+
+                            <div class="sale-field">
+                                <label for="saleSku">Product SKU No.</label>
+                                <input
+                                    type="text"
+                                    id="saleSku"
+                                    placeholder="Auto-filled"
+                                    readonly
+                                />
+                            </div>
+
+                            <div class="sale-field">
+                                <label for="salePrice">Sale Price (₹)</label>
+                                <input
+                                    type="number"
+                                    id="salePrice"
+                                    placeholder="Select product first"
+                                    min="0"
+                                    step="0.01"
+                                    required
+                                />
+                            </div>
+
+                            <div class="sale-field">
+                                <label for="saleQuantity">Product Quantity</label>
+
+                                <select id="saleQuantity" required>
+                                    <option value="">Select quantity</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                </select>
+                            </div>
+
+                            <div class="sale-field sale-field-full">
+                                <label for="saleCustomerName">Customer Name</label>
+
+                                <div class="sale-input-icon">
+                                    <i class="fa-solid fa-user"></i>
+                                    <input
+                                        type="text"
+                                        id="saleCustomerName"
+                                        placeholder="Enter customer name"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="sale-field sale-field-full">
+                                <label for="salePaymentType">Payment Type</label>
+
+                                <select id="salePaymentType" required>
+                                    <option value="">Select payment method</option>
+                                    <option value="cash">Cash</option>
+                                    <option value="online">Online</option>
+                                    <option value="upi">UPI</option>
+                                    <option value="card">Card</option>
+                                    <option value="credit">Credit / Udhaar</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- Sale Summary -->
+                        <div class="sale-summary">
+
+                            <div class="sale-summary-info">
+                                <span>Sale Total</span>
+                                <p>Price × Quantity</p>
+                            </div>
+
+                            <h2 id="saleTotalPreview">₹0.00</h2>
+
+                        </div>
+
+                        <div class="sale-form-footer">
+
+                            <p>
+                                <i class="fa-solid fa-circle-info"></i>
+                                Stock will be updated after a successful sale.
+                            </p>
+
+                            <button type="reset" class="sale-reset-btn">
+                                <i class="fa-solid fa-rotate-left"></i>
+                                Clear Form
+                            </button>
+
+                            <button type="submit" class="sale-submit-btn">
+                                <i class="fa-solid fa-check"></i>
+                                Submit Entry
+                            </button>
+
+                        </div>
+
+                    </div>
+                </form>
+            </section>
+
+            <!-- STOCK MANAGEMENT VIEW -->
+<section id="stockView" hidden>
+
+    <div class="product-page-header">
+        <div>
+            <h2>Stock Management</h2>
+            <p>Manage products that need to be reordered.</p>
+        </div>
+    </div>
+
+    <!-- Two Tabs -->
+    <div class="stock-request-tabs">
+        <button type="button" class="stock-request-tab active"
+                data-stock-tab="entry">
+            Low Stock Entry
+        </button>
+
+        <button type="button" class="stock-request-tab"
+                data-stock-tab="view">
+            Low Stock View
+        </button>
+    </div>
+
+    <!-- Low Stock Entry -->
+    <div id="lowStockEntryPanel" class="stock-request-panel">
+
+        <form id="lowStockForm" class="product-form">
+            <div class="product-form-grid">
+
+                <div class="product-field">
+                    <label for="lowProductName">Product Name *</label>
+                    <input type="text" id="lowProductName"
+                           placeholder="e.g. Sewing Thread" required>
+                </div>
+
+                <div class="product-field">
+                    <label for="lowProductCategory">Product Category</label>
+                    <input type="text" id="lowProductCategory"
+                           placeholder="e.g. Thread">
+                </div>
+
+                <div class="product-field">
+                    <label for="lowProductUnit">Product Unit *</label>
+                    <select id="lowProductUnit" required>
+                        <option value="">Select unit</option>
+                        <option value="piece">Piece</option>
+                        <option value="packet">Packet</option>
+                        <option value="box">Box</option>
+                        <option value="meter">Meter</option>
+                        <option value="roll">Roll</option>
+                        <option value="dozen">Dozen</option>
+                    </select>
+                </div>
+
+                <div class="product-field">
+                    <label for="lowProductColor">Product Color</label>
+                    <input type="text" id="lowProductColor"
+                           placeholder="e.g. Red, Black, White">
+                </div>
+
+                <div class="product-field">
+                    <label for="lowProductBox">Product Box / Quantity</label>
+                    <input type="text" id="lowProductBox"
+                           placeholder="e.g. 2 boxes or 20 packets">
+                </div>
+
+                <div class="product-field">
+                    <label for="lowProductDescription">Description</label>
+                    <textarea id="lowProductDescription"
+                              rows="3"
+                              placeholder="Additional details..."></textarea>
+                </div>
+
+            </div>
+
+            <p id="lowStockFormMessage" role="status"></p>
+
+            <div class="product-form-actions">
+                <button type="reset" class="product-reset-btn">
+                    Clear Form
+                </button>
+
+                <button type="submit" id="saveLowStockBtn"
+                        class="product-save-btn">
+                    Submit Request
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Low Stock View -->
+    <div id="lowStockViewPanel" class="stock-request-panel" hidden>
+
+        <div class="table-heading">
+            <h3>Products to Reorder</h3>
+            <button type="button" id="refreshLowStockBtn">
+                <i class="fa-solid fa-rotate"></i> Refresh
+            </button>
+        </div>
+
+        <div class="table-scroll">
+            <table class="stock-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Unit</th>
+                        <th>Color</th>
+                        <th>Box / Quantity</th>
+                        <th>Description</th>
+                        <th>Request Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="lowStockTableBody">
+                    <tr>
+                        <td colspan="8">Loading requests...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p id="lowStockViewMessage" role="status"></p>
+    </div>
+
+</section>
+
+        </main>
+    </div>
+
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Your JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
