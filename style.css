@@ -536,13 +536,6 @@ body {
     margin-bottom: 26px;
 }
 
-.sale-eyebrow {
-    color: #16836b;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-}
-
 .sale-page-heading h1 {
     margin: 8px 0;
     font-size: 28px;
@@ -1051,7 +1044,7 @@ body {
 
 /* PRODUCT UPLOAD PAGE */
 #productView {
-  padding: 24px;
+  
   color: #243247;
 }
 
@@ -1063,13 +1056,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 22px;
+  margin-bottom: 15px;
 }
 
 .product-page-header h2 {
   margin-top: 1px;
   font-size: 30px;
-  margin-bottom: 1px;
   color: white;
 }
 
@@ -1141,7 +1133,7 @@ body {
 .product-field label {
   font-size: 14px;
   font-weight: 600;
-  color: #94a3b8;
+  color: #282828;
   margin-bottom: 20px;
 }
 
@@ -1153,7 +1145,7 @@ body {
   border: 1px solid #d6dee8;
   border-radius: 7px;
   background: #fff;
-  color: #243247;
+  color: #343535;
   font: inherit;
   outline: none;
 }
@@ -1561,7 +1553,7 @@ textarea {
     }
 
     #productView {
-        padding: 18px;
+        padding: 5px;
     }
 }
 
@@ -1810,13 +1802,12 @@ textarea {
     }
 
     /* Product page */
-    #productView {
-        padding: 12px;
-    }
+   
 
     .product-page-header {
         align-items: flex-start;
         margin-bottom: 16px;
+        margin-top: 10px;
     }
 
     .product-page-header h2 {
@@ -1890,7 +1881,7 @@ textarea {
     }
 
     .main-content {
-        padding: 14px 9px;
+        padding: 14px 12px;
     }
 
     .main-content h1 {
