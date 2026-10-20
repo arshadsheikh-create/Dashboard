@@ -383,16 +383,24 @@ const saleView = document.getElementById("saleView");
 const dashboardMenu = document.getElementById("dashboardMenu");
 const saleMenu = document.getElementById("saleMenu");
 
-function setActiveMenu(activeLink) {
-    document.querySelectorAll(".sidebar-menu a").forEach(function (link) {
-        link.classList.remove("active");
+function setActiveMenu(activeMenu) {
+
+    // Sabhi menu se active class hatao
+    document.querySelectorAll(".sidebar-menu > div").forEach(function (menu) {
+        menu.classList.remove("active");
     });
 
-    if (activeLink) {
-        activeLink.classList.add("active");
+    // Sirf selected menu active karo
+    if (activeMenu) {
+        activeMenu.classList.add("active");
     }
 }
 
+// Site load hone par Dashboard active rahe
+setActiveMenu(dashboardMenu);
+
+
+// SALE MENU CLICK
 if (saleMenu && dashboardView && saleView) {
     saleMenu.addEventListener("click", function (event) {
         event.preventDefault();
@@ -404,10 +412,19 @@ if (saleMenu && dashboardView && saleView) {
             productView.hidden = true;
         }
 
+        if (stockView) {
+            stockView.hidden = true;
+        }
+
         setActiveMenu(saleMenu);
     });
 }
 
+/* =========================================
+   10. NAVIGATION  CLICK
+========================================= */
+
+// DASHBOARD MENU CLICK
 if (dashboardMenu && dashboardView && saleView) {
     dashboardMenu.addEventListener("click", function (event) {
         event.preventDefault();
@@ -419,11 +436,16 @@ if (dashboardMenu && dashboardView && saleView) {
             productView.hidden = true;
         }
 
+        if (stockView) {
+            stockView.hidden = true;
+        }
+
         setActiveMenu(dashboardMenu);
 
         loadTab(activeTab);
     });
 }
+
 
 
 /* =========================================
@@ -1400,7 +1422,7 @@ async function loadLowStockRequests() {
     if (!lowStockTableBody) return;
 
     lowStockTableBody.innerHTML =
-        '<tr><td colspan="8">Loading requests...</td></tr>';
+        '<tr><td colspan="9">Loading requests...</td></tr>';
 
     lowStockViewMessage.textContent = "";
 

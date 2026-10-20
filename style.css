@@ -145,7 +145,7 @@ body {
   padding: 12px 15px;
   border-radius: 8px;
   color: #f4f5f5;
-  background: #059669;
+  background: #3b3b3bb1;
   color: white;
 }
 
@@ -1067,9 +1067,9 @@ body {
 }
 
 .product-page-header h2 {
-  margin-top: 10px;
+  margin-top: 1px;
   font-size: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 1px;
   color: white;
 }
 
@@ -1141,7 +1141,8 @@ body {
 .product-field label {
   font-size: 14px;
   font-weight: 600;
-  color: #35445a;
+  color: #94a3b8;
+  margin-bottom: 20px;
 }
 
 .product-field input,
@@ -1654,6 +1655,7 @@ textarea {
         font-size: 14px;
     }
 
+
     .main-content {
         width: 100%;
         height: auto;
@@ -1956,4 +1958,13 @@ textarea {
         margin: 10px;
         padding: 15px;
     }
+}
+
+#dashboardMenu.active,
+#saleMenu.active,
+#productsMenu.active,
+#stockMenu.active {
+    background: #059669 !important;
+    color: white !important;
+    border-radius: 8px !important;
 }
