@@ -50,13 +50,6 @@
                 <div class="dot"></div>
             </div>
 
-            <div class="Selection-are">
-                <select class="select">
-                    <option class="Admin" value="admin">Admin</option>
-                    <option class="User" value="user">User</option>
-                </select>
-            </div>
-
         </div>
     </header>
 
@@ -69,24 +62,24 @@
 
             <nav class="sidebar-menu">
 
-                <div class="dashboard">
+                <div class="dashboard" id="dashboardMenu" >
                     <i class="fa-solid fa-gauge-high"></i>
-                    <a href="#" id="dashboardMenu" class="active">Dashboard</a>
+                    <a href="#" class="active">Dashboard</a>
                 </div>
 
-                <div class="User style">
+                <div class="User style" id="productsMenu">
                     <i class="fa-solid fa-box-open"></i>
-                    <a href="#" id="productsMenu">Products</a>
+                    <a href="#" >Products</a>
                 </div>
 
-                <div class="Tasks style">
+                <div class="Tasks style" id="saleMenu">
                     <i class="fa-solid fa-cart-flatbed-suitcase"></i>
-                    <a href="#" id="saleMenu">Sale</a>
+                    <a href="#" >Sale</a>
                 </div>
 
-                <div class="Setting style">
+                <div class="Setting style" id="stockMenu">
                     <i class="fa-solid fa-arrow-trend-up"></i>
-                    <a href="#" id="stockMenu">Stock</a>
+                    <a href="#">Stock</a>
                 </div>
 
             </nav>
@@ -119,7 +112,7 @@
                     <div class="inner-card">
                         <div class="card1">
                             <p>Today Sale</p>
-                            <h3>₹0</h3>
+                            <h3 id="todaySale">₹0.00</h3>
                         </div>
 
                         <div class="cardicon">
@@ -132,7 +125,7 @@
                     <div class="inner-card">
                         <div class="card1">
                             <p>Low Stock</p>
-                            <h3>0</h3>
+                            <h3 id="lowStockCount">0</h3>
                         </div>
 
                         <div class="cardicon">

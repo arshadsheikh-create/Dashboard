@@ -13,7 +13,7 @@ body {
 }
 
 body {
-  background: #0f172a;
+  background: #031B26;
   color: #1f2937;
 }
 
@@ -25,12 +25,16 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
-  background: #0f172a;
+  background: #031B26;
   color: white;
 }
 
 .box1{
-   
+   border-radius: 10px;
+   background-color: white;
+   display: flex;
+   justify-content: center;
+   align-items: center;   
 }
 
 .box2{
@@ -42,10 +46,12 @@ body {
 .logo{
    width: 120px;
    height: 60px;
-   background-image: url("image/image_291395ff-removebg-preview.png");
+   background-image: url("image/dashboar-main-logo.png");
    background-repeat: no-repeat;
    background-position: center;
    background-size: contain;
+   
+   
 }
 
 .search-box {
@@ -97,30 +103,6 @@ body {
     margin-top: -10px;
 }
 
-.Selection-are{
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    align-items: center;
-    margin-left: 20px;
-    height: 40px;
-    background-color: transparent;
-    border: 1px solid rgba(90, 88, 94, 0.668);
-    border-radius: 14px;
-}
-
-.select{
-    background-color: transparent;
-    border: none;
-    color: white;
-    user-select: text;
-}
-.select option{
-    color: rgb(248, 248, 248);
-    background-color: #0f172a;
-    
-}
-
 
 /* Header ke neeche ka full area */
 .dashboard-layout {
@@ -138,7 +120,7 @@ body {
   padding: 25px 15px;
   border-radius: 15px;
    border: 1px solid rgba(90, 88, 94, 0.668);
-  background: #1e293b96;
+  background: #031B26;
   color: white;
   box-shadow: 0 4px 12px rgba(4, 4, 4, 0.15);
   overflow: hidden;
@@ -147,7 +129,7 @@ body {
 .sidebar h3 {
   margin-bottom: 20px;
   padding-left: 12px;
-  color: #94a3b8;
+  color: #efeff0;
   font-size: 16px;
   text-transform: uppercase;
 }
@@ -162,8 +144,8 @@ body {
   display: block;
   padding: 12px 15px;
   border-radius: 8px;
-  color: #cbd5e1;
-  background: #1956d9b1;
+  color: #f4f5f5;
+  background: #059669;
   color: white;
 }
 
@@ -176,13 +158,13 @@ body {
   color: white;
 }
 .style:hover{
-     background: #3378e0b1;
+     background: #059669;
 }
 
 .sidebar-menu a {
   padding: 13px 8px;
   border-radius: 8px;
-  color: #cbd5e1;
+  color: white;
   text-decoration: none;
   transition: 0.3s;
   font-size: 15px;
@@ -251,7 +233,7 @@ body {
 
 .card1 p{
     font-size: 18px;
-    color: rgb(97, 97, 97);
+    color: rgb(211, 211, 211);
     justify-content: center;
 }
 
@@ -262,7 +244,7 @@ body {
     height: 50px;
     margin-left: 20px;
     border: 1px solid rgba(90, 88, 94, 0.668);
-    background-color: rgb(5, 87, 174);
+    background-color: #059669;
     border-radius: 14px;
     color: white;
     justify-content: center;
@@ -285,7 +267,7 @@ body {
 }
 
 .card p {
-  color: #2563eb;
+  color: #059669;
   font-size: 28px;
   font-weight: bold;
 }
@@ -382,9 +364,9 @@ body {
 }
 
 .stock-tab.active {
-   background: #14558c;
+   background: #059669;
     color: #fff;
-    border-color: #14558c;
+    border-color: #059669;
 }
 
 .stock-table thead {
@@ -439,15 +421,15 @@ body {
 }
 
 .stock-tab:hover {
-    background: #14558c;
+    background: #059669;
     color: #fff;
-    border-color: #14558c;
+    border-color: #059669;
 }
 
 .stock-tab.stock-active-tab {
-    background: #14558c;
+    background: #059669;
     color: #fff;
-    border-color: #14558c;
+    border-color: #059669;
 }
 
 @media (max-width: 600px) {
@@ -617,7 +599,7 @@ body {
     flex-shrink: 0;
     border-radius: 12px;
     background: #e7f4ff;
-    color: #2463a5;
+    color: #059669;
     font-size: 17px;
 }
 
@@ -679,7 +661,7 @@ body {
 .sale-search-wrap input:focus,
 .sale-field input:focus,
 .sale-field select:focus {
-    border-color: #16836b;
+    border-color: #059669;
     box-shadow: 0 0 0 3px rgba(22, 131, 107, 0.1);
 }
 
@@ -725,7 +707,7 @@ body {
 
 .sale-product-option:hover,
 .sale-product-option.selected {
-    border-color: #16836b;
+    border-color: #059669;
     background: #f0faf6;
 }
 
@@ -761,11 +743,11 @@ body {
     place-items: center;
     border-radius: 10px;
     background: #d9f2e6;
-    color: #16836b;
+    color: #059669;
 }
 
 .selected-product-card span {
-    color: #16836b;
+    color: #059669;
     font-size: 9px;
     font-weight: 800;
     letter-spacing: 0.8px;
@@ -840,7 +822,7 @@ body {
 
 .sale-summary h2 {
     margin: 0;
-    color: #16836b;
+    color: #059669;
     font-size: 25px;
     overflow-wrap: anywhere;
 }
@@ -864,7 +846,7 @@ body {
 
 .sale-form-footer > p i {
     margin-right: 5px;
-    color: #16836b;
+    color: #059669;
 }
 
 .sale-reset-btn,
@@ -889,13 +871,13 @@ body {
 }
 
 .sale-submit-btn {
-    border: 1px solid #16836b;
-    background: #16836b;
+    border: 1px solid #059669;
+    background: #059669;
     color: #ffffff;
 }
 
 .sale-submit-btn:hover {
-    background: #116b58;
+    background: #059669;
 }
 
 .sale-reset-btn:hover {
@@ -1043,7 +1025,7 @@ body {
     border: 0;
     border-radius: 6px;
     cursor: pointer;
-    background: #14558c;
+    background: #059669;
     color: #ffffff;
     font-weight: 600;
 }
@@ -1131,7 +1113,7 @@ body {
 
 #selectedProductMessage {
     margin-top: 8px;
-    color: #14558c;
+    color: #059669;
     font-size: 14px;
 }
 
@@ -1177,7 +1159,7 @@ body {
 
 .product-field input:focus,
 .product-field select:focus {
-  border-color: #14558c;
+  border-color: #059669;
   box-shadow: 0 0 0 3px rgba(20, 85, 140, 0.1);
 }
 
@@ -1197,12 +1179,12 @@ body {
 }
 
 .product-save-btn {
-  background: #14558c;
+  background: #059669;
   color: #fff;
 }
 
 .product-save-btn:hover {
-  background: #0e416d;
+  background: #059669;
 }
 
 .product-reset-btn {
@@ -1265,9 +1247,9 @@ body {
 }
 
 .stock-request-tab.active {
-    background: #14558c;
+    background: #059669;
     color: #fff;
-    border-color: #14558c;
+    border-color: #059669;
 }
 
 .stock-request-panel {
@@ -1292,13 +1274,13 @@ body {
 #lowStockForm select:focus,
 #lowStockForm textarea:focus {
     outline: 2px solid #b9d8f2;
-    border-color: #14558c;
+    border-color: #059669;
 }
 
 #lowStockFormMessage,
 #lowStockViewMessage {
     margin-top: 12px;
-    color: #14558c;
+    color: #059669;
     font-size: 14px;
 }
 
@@ -1902,7 +1884,7 @@ textarea {
     }
 
     .search-box {
-        width: 160px;
+        width: 270px;
     }
 
     .main-content {
@@ -1948,7 +1930,7 @@ textarea {
     color: #ffffff;
     font-size: 19px;
     cursor: pointer;
-    display: inline-flex;
+    display:none;
     margin-left: auto;
     
 }

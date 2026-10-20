@@ -13,7 +13,7 @@ const supabaseClient = window.supabase.createClient(
 
 
 /* =========================================
-   2. HELPER FUNCTIONS
+   2. HELPER FUNCTIONS`
 ========================================= */
 
 function escapeHTML(value) {
@@ -1550,3 +1550,82 @@ if (menuButton && mobileSidebar) {
         }
     });
 }
+
+
+// -------------------------------------------//
+// -------Card data load function----------- //
+// -------------------------------------------//
+
+
+async function loadDashboardCards() {
+    const totalProductsEl = document.getElementById("totalProducts");
+    const todaySaleEl = document.getElementById("todaySale");
+    const lowStockEl = document.getElementById("lowStockCount");
+
+    try {
+        // 1. Total products count
+        const { count, error: productsError } = await supabaseClient
+            .from("products")
+            .select("id", { count: "exact", head: true });
+
+        if (productsError) throw productsError;
+
+        totalProductsEl.textContent = count ?? 0;
+
+        // 2. Low stock products count
+        const { data: products, error: stockError } = await supabaseClient
+            .from("products")
+            .select("current_stock, min_stock");
+
+        if (stockError) throw stockError;
+
+        const lowStockCount = (products || []).filter(product =>
+            Number(product.current_stock || 0) <=
+            Number(product.min_stock ?? 5)
+        ).length;
+
+        lowStockEl.textContent = lowStockCount;
+
+        // 3. Today's total sales
+        const now = new Date();
+
+        // Aaj ki date ke local start aur next day ka start
+        const start = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate()
+        );
+
+        const end = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate() + 1
+        );
+
+        const { data: sales, error: salesError } = await supabaseClient
+            .from("sale_products")
+            .select("total_amount, sale_date")
+            .gte("sale_date", start.toISOString())
+            .lt("sale_date", end.toISOString());
+
+        if (salesError) throw salesError;
+
+        const todayTotal = (sales || []).reduce(
+            (total, sale) => total + Number(sale.total_amount || 0),
+            0
+        );
+
+        todaySaleEl.textContent = todayTotal.toLocaleString("en-IN", {
+            style: "currency",
+            currency: "INR",
+            minimumFractionDigits: 2
+        });
+
+    } catch (error) {
+        console.error("Dashboard cards error:", error);
+    }
+}
+
+// Dashboard cards load karo
+loadDashboardCards();
+
