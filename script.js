@@ -1451,7 +1451,7 @@ async function loadLowStockRequests() {
                 '<tr><td colspan="9">No reorder requests found.</td></tr>';
 
             lowStockViewMessage.textContent =
-                "Abhi koi product request save nahi hai.";
+                "No Product Request Saved";
             return;
         }
 
