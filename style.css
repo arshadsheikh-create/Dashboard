@@ -1593,8 +1593,8 @@ textarea {
     }
 
     .logo {
-        width: 95px;
-        height: 45px;
+        width: 90px;
+        height: 40px;
         flex-shrink: 0;
     }
 
@@ -1749,6 +1749,11 @@ textarea {
         padding: 11px 12px;
         font-size: 12px;
     }
+
+    /* Only Category column data text red */
+.stock-table tbody td:nth-child(5) {
+    color: red !important;
+}
 
     /* Sale page */
     .sale-view {
@@ -1973,3 +1978,20 @@ textarea {
     color: white !important;
     border-radius: 8px !important;
 }
+
+
+
+/* Category background badge */
+#tableBody .category-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    background-color: #c9f3f2;
+    color: #059669;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    border-radius: 4px;
+    text-align: center;
+    white-space: nowrap;
+}
+

@@ -133,6 +133,9 @@ function showLoading() {
     }
 }
 
+//  ------------------------------------------------- show Row in the table -----------------------------  //
+
+
 function showRows(rows) {
     if (!tableBody) return;
 
@@ -157,8 +160,17 @@ function showRows(rows) {
     tableBody.innerHTML = rows.map(function (row) {
         return `
             <tr>
-                ${row.map(function (cell) {
-                    return `<td>${cell ?? "—"}</td>`;
+                ${row.map(function (cell, index) {
+                    // Category = 5th column, Unit = 8th column
+                    const isBadgeColumn = index === 4 || index === 7;
+
+                    return `
+                        <td>
+                            ${isBadgeColumn
+                                ? `<span class="category-badge">${cell ?? "—"}</span>`
+                                : (cell ?? "—")}
+                        </td>
+                    `;
                 }).join("")}
             </tr>
         `;
