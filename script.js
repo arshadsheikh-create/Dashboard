@@ -69,15 +69,19 @@ const columnConfig = {
     sales: {
     title: "Stock Items",
     headers: [
-        "Product ID",
-        "Product Name",
-        "SKU",
-        "Listing Date",
-        "Category",
-        "Purchase Price",
-        "Sale Price",
-        "Unit Quantity",
-        "Unit Type"
+    "Product ID",
+    "Product Name",
+    "SKU",
+    "Listing Date",
+    "Category",
+    "Purchase Price",
+    "Sale Price",
+    "Current Stock",
+    "Main Stock",
+    "Minimum Stock",
+   // "Unit",
+    "Unit Type",
+    "Unit Quantity"
     ]
     },
 
@@ -161,8 +165,8 @@ function showRows(rows) {
         return `
             <tr>
                 ${row.map(function (cell, index) {
-                    // Category = 5th column, Unit = 8th column
-                    const isBadgeColumn = index === 4 || index === 7;
+                    // Category = 5th column,.stock-request-panel Unit = 8th column
+                   const isBadgeColumn = index === 1 || index === 7 || index === 10;
 
                     return `
                         <td>
@@ -246,19 +250,23 @@ async function fetchAllProducts() {
    6. CONVERT PRODUCT DATA INTO TABLE ROWS
 ========================================= */
 
-function productToRow(product) {
-    return [
-        escapeHTML(product.id),
-        escapeHTML(product.product_name),
-        escapeHTML(product.sku || "—"),
-        formatDate(product.created_at),
-        escapeHTML(product.category || "—"),
-        formatPrice(product.purchase_price),
-        formatPrice(product.selling_price),
-        escapeHTML(product.unit_quantity ?? 1),
-        escapeHTML(product.unit_type || "piece")
-    ];
-}
+    function productToRow(product) {
+        return [
+            escapeHTML(product.id ?? "—"),
+            escapeHTML(product.product_name ?? "—"),
+            escapeHTML(product.sku || "—"),
+            formatDate(product.created_at),
+            escapeHTML(product.category || "—"),
+            formatPrice(product.purchase_price),
+            formatPrice(product.selling_price),
+            escapeHTML(product.current_stock ?? 0),
+            escapeHTML(product.main_stock ?? 0),
+            escapeHTML(product.min_stock ?? 0),
+           // escapeHTML(product.unit || "—"),
+            escapeHTML(product.unit_type || "—"),
+            escapeHTML(product.unit_quantity ?? 1)
+        ];
+    }
 
 function lowStockToRow(product) {
     return [
@@ -1466,9 +1474,15 @@ async function loadLowStockRequests() {
                     <td>${escapeLowStockText(product.product_name)}</td>
                     <td>${escapeLowStockText(product.product_category || "-")}</td>
                     <td>${escapeLowStockText(product.product_unit || "-")}</td>
-                    <td>${escapeLowStockText(product.product_color || "-")}</td>
+
+                      <td class="color-column">
+                        ${escapeLowStockText(product.product_color || "-")}
+                     </td>
+
                     <td>${escapeLowStockText(product.product_box || "-")}</td>
-                    <td>${escapeLowStockText(product.description || "-")}</td>
+                    <td class="description-column">
+                    ${escapeLowStockText(product.description || "-")}
+                     </td>
                     <td>${escapeLowStockText(date)}</td>
 
                     <td>
